@@ -1,7 +1,5 @@
-mensajeEncriptado ="LZAHL ZBTHW YBLIH XBLKL ILYOH ZLYCH ROKH"
+mensajeEncriptado = "LZAHL ZBTHW YBLIH XBLKL ILYOH ZLYCH ROKH"
 abecedario = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
-listaAbecedario = list(abecedario)
-
 
 def numeroMaximoRepetido(listaEncriptada):
     matriz = []
@@ -12,4 +10,15 @@ def numeroMaximoRepetido(listaEncriptada):
         cantidadVecesRepetida.append(contador)
     return (max(cantidadVecesRepetida))
 
-print(numeroMaximoRepetido(mensajeEncriptado))
+
+def decifrarCesar(abc,listaEncriptada,desplazamiento):
+    mensajeFinal = ""
+    for i in range(0, len(listaEncriptada)):
+        for j in range(0, len(abc)):
+            if listaEncriptada[i] == abecedario[j]:
+                mensajeFinal = mensajeFinal + abecedario[j - desplazamiento]
+        if listaEncriptada[i] == " ":
+            mensajeFinal = mensajeFinal + " "
+    return mensajeFinal
+
+print(decifrarCesar(abecedario,mensajeEncriptado,numeroMaximoRepetido(mensajeEncriptado)))
