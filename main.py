@@ -1,24 +1,39 @@
-mensajeEncriptado = "LZAHL ZBTHW YBLIH XBLKL ILYOH ZLYCH ROKH"
-abecedario = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+def maxNumberRepeat(encryptedList):
+    array = []
+    numberRepeat = []
+    for i in range(0, len(encryptedList)):
+        array.append(encryptedList[i])
+        contador = encryptedList.count(array[i])
+        numberRepeat.append(contador)
+    return (max(numberRepeat))
 
-def numeroMaximoRepetido(listaEncriptada):
-    matriz = []
-    cantidadVecesRepetida = []
-    for i in range(0, len(listaEncriptada)):
-        matriz.append(mensajeEncriptado[i])
-        contador = mensajeEncriptado.count(matriz[i])
-        cantidadVecesRepetida.append(contador)
-    return (max(cantidadVecesRepetida))
-
-
-def decifrarCesar(abc,listaEncriptada,desplazamiento):
-    mensajeFinal = ""
-    for i in range(0, len(listaEncriptada)):
+def cesar(abc,encryptedList,displacement):
+    finalMessage = ""
+    for i in range(0, len(encryptedList)):
         for j in range(0, len(abc)):
-            if listaEncriptada[i] == abecedario[j]:
-                mensajeFinal = mensajeFinal + abecedario[j - desplazamiento]
-        if listaEncriptada[i] == " ":
-            mensajeFinal = mensajeFinal + " "
-    return mensajeFinal
+            if encryptedList[i] == abc[j]:
+                finalMessage = finalMessage + abc[j - displacement]
+        if encryptedList[i] == " ":
+            finalMessage = finalMessage + " "
+    return finalMessage
 
-print(decifrarCesar(abecedario,mensajeEncriptado,numeroMaximoRepetido(mensajeEncriptado)))
+
+if __name__ == '__main__':
+    encryptedMessage = "LZAHL ZBTHW YBLIH XBLKL ILYOH ZLYCH ROKH"
+    abc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+
+    displacement = maxNumberRepeat(encryptedMessage)
+    print(cesar(abc, encryptedMessage, displacement))
+
+
+
+
+
+
+
+
+
+
+
+
+
